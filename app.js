@@ -14,13 +14,14 @@
 'use strict';
 
 const express = require('express');
+var path = require('path');
 
 const app = express();
 
 // [START hello_world]
-// Say hello!
+app.use('/static', express.static(path.join(__dirname, 'static')))
 app.get('/', (req, res) => {
-  res.status(200).send('Hello, world!');
+  res.sendFile(path.join(__dirname + '/web/index.html'));
 });
 // [END hello_world]
 
